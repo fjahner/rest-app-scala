@@ -5,9 +5,14 @@ ThisBuild / scalaVersion := Versions.scala3
 ThisBuild / organization := "com.github.fjahner"
 
 lazy val root = (project in file("."))
+  .enablePlugins(BuildInfoPlugin)
   .settings(
     name := "rest-app-scala",
     libraryDependencies ++= Dependencies.allDependencies,
+
+    // BuildInfo configuration
+    buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion),
+    buildInfoPackage := "com.github.fjahner",
 
     // Compiler options for Scala 3
     scalacOptions ++= Seq(
