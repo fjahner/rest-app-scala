@@ -1,8 +1,8 @@
-package com.github.fjahner.endpoints
+package com.github.fjahner.system.endpoints
 
 import cats.effect.IO
-import com.github.fjahner.models.HealthResponse
-import com.github.fjahner.services.HealthCheckService
+import com.github.fjahner.system.models.HealthResponse
+import com.github.fjahner.system.services.HealthCheckService
 import io.circe.Json
 import sttp.model.StatusCode
 import sttp.tapir.*
@@ -11,13 +11,13 @@ import sttp.tapir.server.ServerEndpoint
 
 class SystemEndpoints(healthCheckService: HealthCheckService):
 
-  val livenessEndpoint: PublicEndpoint[Unit, Unit, Json, Any] =
+  private val livenessEndpoint: PublicEndpoint[Unit, Unit, Json, Any] =
     endpoint.get
       .in("_system" / "alive")
       .out(jsonBody[Json])
       .description("Liveness probe - returns empty JSON if application is running")
 
-  val readinessEndpoint: PublicEndpoint[Unit, HealthResponse, HealthResponse, Any] =
+  private val readinessEndpoint: PublicEndpoint[Unit, HealthResponse, HealthResponse, Any] =
     endpoint.get
       .in("_system" / "ready")
       .out(jsonBody[HealthResponse])

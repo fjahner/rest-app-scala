@@ -1,7 +1,7 @@
-package com.github.fjahner.models
+package com.github.fjahner.system.models
 
-import io.circe.{Decoder, Encoder}
 import io.circe.generic.semiauto.{deriveDecoder, deriveEncoder}
+import io.circe.{Decoder, Encoder}
 import sttp.tapir.Schema
 
 case class HealthResponse(

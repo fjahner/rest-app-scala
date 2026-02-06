@@ -2,12 +2,13 @@ package com.github.fjahner
 
 import cats.effect.*
 import com.comcast.ip4s.*
-import com.github.fjahner.endpoints.{SwaggerEndpoints, SystemEndpoints}
-import com.github.fjahner.services.HealthCheckService
+import com.github.fjahner.system.endpoints.SystemEndpoints
+import com.github.fjahner.system.services.HealthCheckService
 import org.http4s.*
 import org.http4s.ember.server.EmberServerBuilder
 import org.http4s.server.Server
 import sttp.tapir.server.http4s.Http4sServerInterpreter
+import sttp.tapir.swagger.bundle.SwaggerInterpreter
 
 object Main extends IOApp.Simple:
 
@@ -15,7 +16,13 @@ object Main extends IOApp.Simple:
 
   private val systemEndpoints = SystemEndpoints(healthCheckService)
 
-  private val swaggerRoutes = SwaggerEndpoints.routes(systemEndpoints.allEndpoints)
+  private val swaggerRoutes =
+    SwaggerInterpreter()
+      .fromEndpoints[IO](
+        systemEndpoints.allEndpoints,
+        "Scala REST API",
+        BuildInfo.version
+      )
 
   private val allRoutes: HttpRoutes[IO] =
     Http4sServerInterpreter[IO]().toRoutes(

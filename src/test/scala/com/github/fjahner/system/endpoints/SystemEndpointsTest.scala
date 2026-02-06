@@ -1,8 +1,8 @@
-package com.github.fjahner.endpoints
+package com.github.fjahner.system.endpoints
 
 import cats.effect.IO
-import com.github.fjahner.models.HealthResponse
-import com.github.fjahner.services.HealthCheckService
+import com.github.fjahner.system.models.HealthResponse
+import com.github.fjahner.system.services.HealthCheckService
 import com.github.fjahner.util.TapirCatsEffectSuite
 import io.circe.Json
 import io.circe.parser.decode

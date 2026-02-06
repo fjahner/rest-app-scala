@@ -1,4 +1,4 @@
-package com.github.fjahner.services
+package com.github.fjahner.system.services
 
 import munit.CatsEffectSuite
 
