@@ -33,11 +33,5 @@ object Main extends IOApp.Simple:
   override def run: IO[Unit] =
     server.use { _ =>
       IO.println("Server started at http://localhost:8080") *>
-        IO.println("Available endpoints:") *>
-        IO.println("  GET /health - Legacy health check") *>
-        IO.println("  GET /alive  - Liveness probe") *>
-        IO.println("  GET /ready  - Readiness probe") *>
-        IO.println("  GET /docs   - Swagger UI") *>
-        IO.println("Press CTRL+C to stop...") *>
         IO.never
     }
