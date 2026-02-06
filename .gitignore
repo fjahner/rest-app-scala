@@ -1,5 +1,77 @@
+# Scala & sbt specific
 *.class
 *.log
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/target/
+project/project/
+.history
+.cache
+.lib/
+dist/*
+.scala_dependencies
+.worksheet
+.bsp/
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# sbt-specific
+.sbt
+metals.sbt
+.sbtopts
+
+# IntelliJ IDEA
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+.cache-main
+.cache-tests
+bin/
+
+# VS Code + Metals
+.vscode/
+.metals/
+.bloop/
+metals.sbt
+
+# Mac OS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# JVM crash logs
 hs_err_pid*
+replay_pid*
+
+# Application specific
+logs/
+*.log.*
+tmp/
+temp/
+.env
+.env.local
+secrets/
+
+# Test coverage reports
+coverage/
+scoverage-report/
+scoverage-data/
